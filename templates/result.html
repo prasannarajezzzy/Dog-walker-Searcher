@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Create two equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 50%;
+                padding: 10px;
+                margin: 10px;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            /* Style the buttons */
+            .btn {
+                border: none;
+                outline: none;
+                padding: 12px 16px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+            }
+
+            .btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>List Dog walker Company and their Contact Details</h2>
+
+        <p>Click on a button to choose list view or grid view.</p>
+        <br />
+
+        {% for value in data %}
+
+        <tr>
+            <div class="column" style="background-color:#aaa;">
+                <h2>{{ value["name"] }}</h2>
+                <a>Site link :{{ value["link"] }}</p>
+                <strong>Contact Details</strong>
+                <p>
+                    {{ "" if value["mobile"]=="" else "Phone :" +
+                    value["mobile"] }}
+                </p>
+            </div>
+        </tr>
+
+        {% endfor %}
+        <script>
+            // Get the elements with class="column"
+            var elements = document.getElementsByClassName("column");
+
+            // Declare a loop variable
+            var i;
+
+            // List View
+            function listView() {
+                for (i = 0; i < elements.length; i++) {
+                    elements[i].style.width = "100%";
+                }
+            }
+
+            listView();
+        </script>
+    </body>
+</html>
